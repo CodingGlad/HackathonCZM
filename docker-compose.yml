@@ -22,6 +22,6 @@ services:
       - POSTGRES_USER=camunda
       - POSTGRES_PASSWORD=camunda
     volumes:
-      - ./data:/var/lib/postgresql/camunda:z
+      - ./data:/var/lib/postgresql/data
     ports:
       - 5444:5432
