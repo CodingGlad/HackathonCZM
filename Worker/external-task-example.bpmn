@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0y0qy0w" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.4.1" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.18.0">
+  <bpmn:collaboration id="Collaboration_1auc03n">
+    <bpmn:participant id="Participant_ExternalWorker" name="Example of external worker" processRef="Process_ExternalWorker" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_ExternalWorker" name="External Worker" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_Standard">
+      <bpmn:extensionElements />
+      <bpmn:outgoing>Flow_0mxreij</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:serviceTask id="Activity_02ywo8n" name="Create External Task" camunda:type="external" camunda:topic="test-topic">
+      <bpmn:incoming>Flow_0mxreij</bpmn:incoming>
+      <bpmn:outgoing>Flow_01o0l9m</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_0mxreij" sourceRef="StartEvent_Standard" targetRef="Activity_02ywo8n" />
+    <bpmn:sequenceFlow id="Flow_01o0l9m" sourceRef="Activity_02ywo8n" targetRef="UserTask_Example" />
+    <bpmn:sequenceFlow id="Flow_0kz1e4w" sourceRef="UserTask_Example" targetRef="UserTask_ExampleTwo" />
+    <bpmn:userTask id="UserTask_Example" name="Example User Task" camunda:asyncAfter="true">
+      <bpmn:incoming>Flow_01o0l9m</bpmn:incoming>
+      <bpmn:outgoing>Flow_0kz1e4w</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_0ej04ww" sourceRef="UserTask_ExampleTwo" targetRef="EndEvent_OkPath" />
+    <bpmn:userTask id="UserTask_ExampleTwo" name="Example User Task Two">
+      <bpmn:incoming>Flow_0kz1e4w</bpmn:incoming>
+      <bpmn:outgoing>Flow_0ej04ww</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:endEvent id="EndEvent_OkPath">
+      <bpmn:incoming>Flow_0ej04ww</bpmn:incoming>
+    </bpmn:endEvent>
+  </bpmn:process>
+  <bpmn:message id="Message_0ji1m9p" name="MESSAGE_EXAMPLE" />
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1auc03n">
+      <bpmndi:BPMNShape id="Participant_0eq4ey2_di" bpmnElement="Participant_ExternalWorker" isHorizontal="true">
+        <dc:Bounds x="160" y="85" width="950" height="250" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_Standard">
+        <dc:Bounds x="282" y="192" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0lu993m_di" bpmnElement="Activity_02ywo8n">
+        <dc:Bounds x="380" y="170" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0lo1hgj_di" bpmnElement="UserTask_Example">
+        <dc:Bounds x="560" y="170" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_10tvqx2_di" bpmnElement="UserTask_ExampleTwo">
+        <dc:Bounds x="770" y="170" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0oxdy3c_di" bpmnElement="EndEvent_OkPath">
+        <dc:Bounds x="912" y="192" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0mxreij_di" bpmnElement="Flow_0mxreij">
+        <di:waypoint x="318" y="210" />
+        <di:waypoint x="380" y="210" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_01o0l9m_di" bpmnElement="Flow_01o0l9m">
+        <di:waypoint x="480" y="210" />
+        <di:waypoint x="560" y="210" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0kz1e4w_di" bpmnElement="Flow_0kz1e4w">
+        <di:waypoint x="660" y="210" />
+        <di:waypoint x="770" y="210" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0ej04ww_di" bpmnElement="Flow_0ej04ww">
+        <di:waypoint x="870" y="210" />
+        <di:waypoint x="912" y="210" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
