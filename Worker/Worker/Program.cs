@@ -1,11 +1,8 @@
 ﻿// Simple REST client for Camunda 7 Example
 
 using Camunda.Api.Client;
-using Camunda.Api.Client.Deployment;
 using Camunda.Api.Client.ExternalTask;
-using Camunda.Api.Client.Message;
 using Camunda.Api.Client.ProcessDefinition;
-using Camunda.Api.Client.ProcessInstance;
 using Camunda.Api.Client.UserTask;
 
 Console.WriteLine("Camunda Example!");
