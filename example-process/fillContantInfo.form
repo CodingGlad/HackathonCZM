@@ -1,0 +1,82 @@
+{
+  "components": [
+    {
+      "text": "# Osobní a kontaktní údaje",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_15p9chp",
+        "columns": null
+      },
+      "id": "Field_02rpcsv"
+    },
+    {
+      "label": "Jméno",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0r46jlu",
+        "columns": null
+      },
+      "id": "Field_02u5xw9",
+      "key": "name",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Přijmení",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1r87lyd",
+        "columns": null
+      },
+      "id": "Field_1vxyswb",
+      "key": "surname",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "text": "### Kontaktní údaje",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_1qfbxlf",
+        "columns": null
+      },
+      "id": "Field_1924ls0"
+    },
+    {
+      "label": "Telefonní číslo",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_03hus5m",
+        "columns": null
+      },
+      "id": "Field_1snagg0",
+      "key": "phoneNumber",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "text": "Zpracování osobních a kontaktních údajů...",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_151hiv4",
+        "columns": null
+      },
+      "id": "Field_0afifmv"
+    }
+  ],
+  "type": "default",
+  "id": "fillContactInfo",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.15.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.19.0",
+  "schemaVersion": 10
+}

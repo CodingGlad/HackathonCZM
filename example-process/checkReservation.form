@@ -1,0 +1,80 @@
+{
+  "components": [
+    {
+      "text": "# Kontrola rezervace",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_1qv58zk",
+        "columns": null
+      },
+      "id": "Field_0h2qbos"
+    },
+    {
+      "label": "Jméno",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0nds8fi",
+        "columns": null
+      },
+      "id": "Field_0op48yw",
+      "key": "name",
+      "readonly": false,
+      "disabled": true
+    },
+    {
+      "label": "Přijmení",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1p2g5q4",
+        "columns": null
+      },
+      "id": "Field_1r8z95r",
+      "key": "surname",
+      "readonly": false,
+      "disabled": true
+    },
+    {
+      "label": "Telefonní číslo",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1d5hxb9",
+        "columns": null
+      },
+      "id": "Field_1merqrz",
+      "key": "phoneNumber",
+      "readonly": false,
+      "disabled": true
+    },
+    {
+      "label": "Datum rezervace",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1admih9",
+        "columns": null
+      },
+      "id": "Field_13qk04x",
+      "key": "reservationDate",
+      "disabled": true
+    },
+    {
+      "label": "Je rezervace validní?",
+      "type": "checkbox",
+      "layout": {
+        "row": "Row_14u4uvj",
+        "columns": null
+      },
+      "id": "Field_0wu4f3i",
+      "key": "isReservationValid"
+    }
+  ],
+  "type": "default",
+  "id": "checkReservation",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.15.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.19.0",
+  "schemaVersion": 10
+}

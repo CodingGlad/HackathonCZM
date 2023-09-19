@@ -1,0 +1,37 @@
+{
+  "components": [
+    {
+      "text": "# Výběr termínu rezervace",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_1sd3uwj",
+        "columns": null
+      },
+      "id": "Field_16bdgzx"
+    },
+    {
+      "label": "Datum rezervace",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0l0gtp0",
+        "columns": null
+      },
+      "id": "Field_1hcib3j",
+      "key": "reservationDate",
+      "description": "Prosím vyberte datum rezervace ve formátu DD/MM/YYYY",
+      "validate": {
+        "required": true
+      }
+    }
+  ],
+  "type": "default",
+  "id": "reservationDatePick",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.15.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.19.0",
+  "schemaVersion": 10
+}
