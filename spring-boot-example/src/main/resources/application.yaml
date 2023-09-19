@@ -1,0 +1,10 @@
+server:
+  port: 8091
+camunda:
+  bpm:
+    client: # configuration docs - https://docs.camunda.org/manual/7.19/user-guide/ext-client/spring-boot-starter/#application-yml-file
+      base-url: "http://89.221.215.30:8080/engine-rest"
+      async-response-timeout: 1000 # Defines the maximum duration of the long-polling request
+      worker-id: example-client # Identifies the worker towards the Engine
+logging.level.org.camunda.bpm.client: DEBUG # increase the log level of the application
+
