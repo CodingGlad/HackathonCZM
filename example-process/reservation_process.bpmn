@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1f66xyg" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.15.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.19.0">
+  <bpmn:collaboration id="Collaboration_02ad8we">
+    <bpmn:participant id="Participant_1un75cs" name="Proces rezrervace termínu" processRef="Process_Reservation" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_Reservation" name="Proces Rezervace" isExecutable="true" camunda:historyTimeToLive="180">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_1xddgwu</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_1xddgwu" sourceRef="StartEvent_1" targetRef="Activity_0l5ayuj" />
+    <bpmn:sequenceFlow id="Flow_1wud7pg" sourceRef="Activity_0l5ayuj" targetRef="Activity_0q6fk9b" />
+    <bpmn:endEvent id="Event_0itumkx">
+      <bpmn:incoming>Flow_05kl6al</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_05kl6al" sourceRef="Activity_0q6fk9b" targetRef="Event_0itumkx" />
+    <bpmn:userTask id="Activity_0l5ayuj" name="Výběr termínu rezervace">
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="reservationDate" label="Datum rezervace" type="string" />
+        </camunda:formData>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1xddgwu</bpmn:incoming>
+      <bpmn:outgoing>Flow_1wud7pg</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="Activity_0q6fk9b" name="Vyplnění osobních a kontaktních údajů">
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="name" label="Jméne" type="string" />
+          <camunda:formField id="surname" label="Přijmení" type="string" />
+        </camunda:formData>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1wud7pg</bpmn:incoming>
+      <bpmn:outgoing>Flow_05kl6al</bpmn:outgoing>
+    </bpmn:userTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_02ad8we">
+      <bpmndi:BPMNShape id="Participant_1un75cs_di" bpmnElement="Participant_1un75cs" isHorizontal="true">
+        <dc:Bounds x="152" y="80" width="538" height="250" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="202" y="182" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0itumkx_di" bpmnElement="Event_0itumkx">
+        <dc:Bounds x="602" y="182" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_02sl50y_di" bpmnElement="Activity_0l5ayuj">
+        <dc:Bounds x="300" y="160" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0a4hlc6_di" bpmnElement="Activity_0q6fk9b">
+        <dc:Bounds x="460" y="160" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1xddgwu_di" bpmnElement="Flow_1xddgwu">
+        <di:waypoint x="238" y="200" />
+        <di:waypoint x="300" y="200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1wud7pg_di" bpmnElement="Flow_1wud7pg">
+        <di:waypoint x="400" y="200" />
+        <di:waypoint x="460" y="200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_05kl6al_di" bpmnElement="Flow_05kl6al">
+        <di:waypoint x="560" y="200" />
+        <di:waypoint x="602" y="200" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
