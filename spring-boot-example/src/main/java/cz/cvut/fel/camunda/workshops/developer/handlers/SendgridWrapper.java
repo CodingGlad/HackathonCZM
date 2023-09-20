@@ -7,19 +7,24 @@ import com.sendgrid.SendGrid;
 import com.sendgrid.helpers.mail.Mail;
 import com.sendgrid.helpers.mail.objects.Content;
 import com.sendgrid.helpers.mail.objects.Email;
+import cz.cvut.fel.camunda.workshops.developer.congif.AppConfig;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 
 @Component
 public class SendgridWrapper {
+    @Autowired
+    private AppConfig appConfig;
+
     public Response sendMail() throws IOException {
         return sendMail("poreothepwner@gmail.com",
                 "This is a test email sent from SendGrid.");
     }
 
     public Response sendMail(String receiver, String textContent) throws IOException {
-        String apiKey = "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";
+        String apiKey = appConfig.getApiKey();
 
         Email from = new Email("jakubwodecki@seznam.cz");
         String subject = "Hello, SendGrid!";
