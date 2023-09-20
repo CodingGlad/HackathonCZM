@@ -12,10 +12,12 @@ import org.camunda.bpm.engine.variable.Variables;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
+import java.util.Map;
+
 @Slf4j
 @Component
 @ExternalTaskSubscription(
-        topicName = "fetchUserDetail"
+        topicName = "contactVubec"
 )
 public class FetchUserDetailHandler implements ExternalTaskHandler {
 
@@ -23,29 +25,10 @@ public class FetchUserDetailHandler implements ExternalTaskHandler {
     @Override
     public void execute(ExternalTask externalTask, ExternalTaskService externalTaskService) {
 
-        VariableMap variables = Variables.createVariables();
-        variables.put("customerId", "Hello World");
+        Map<String, Object> inputVariables = externalTask.getAllVariables();
 
-        UserDetail userDetail = new UserDetail();
-        userDetail.setName("Karel");
-        userDetail.setUsername("karelnov");
+        log.info("Client name: " + inputVariables.get("jmenoVubec"));
 
-        variables.put("customer", Variables.objectValue(userDetail).serializationDataFormat("application/json").create());
-
-        externalTaskService.complete(externalTask, variables);
-    }
-
-    @EventListener(SubscriptionInitializedEvent.class)
-    public void catchSubscriptionInitEvent(SubscriptionInitializedEvent event) {
-
-        SpringTopicSubscription topicSubscription = event.getSource();
-        if (!topicSubscription.isAutoOpen()) {
-
-            // open topic in case it is not opened already
-            topicSubscription.open();
-
-            log.info("Subscription with topic name '{}' has been opened!",
-                     topicSubscription.getTopicName());
-        }
+        externalTaskService.complete(externalTask);
     }
 }
