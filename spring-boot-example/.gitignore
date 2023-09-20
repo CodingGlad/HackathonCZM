@@ -30,7 +30,7 @@ build/
 !**/src/test/**/build/
 
 ### Secret ###
-src/main/resources/secret.properties
+./src/main/resources/secret.properties
 
 ### VS Code ###
 .vscode/
