@@ -9,6 +9,7 @@ import org.camunda.community.rest.client.dto.StartProcessInstanceDto;
 import org.camunda.community.rest.client.dto.VariableValueDto;
 import org.camunda.community.rest.client.invoker.ApiException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Required;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,7 +21,7 @@ import java.util.UUID;
 @Slf4j
 @RequiredArgsConstructor
 public class StartProcessController {
-
+    @Autowired SendgridWrapper sendgridWrapper;
     private static final String PROCESS_KEY = "Process_ExternalTaskExample";
 
     private final ProcessDefinitionApi processDefinitionApi;
@@ -34,8 +35,18 @@ public class StartProcessController {
     }
 
     @PostMapping("/sendEmail")
-    public Response sendEmail(@Autowired SendgridWrapper sendgridWrapper,
-    @RequestBody String receiver, @RequestBody String message) throws IOException {
+    public Response sendEmail(@RequestBody(required = false) String receiver,
+                              @RequestBody(required = false) String message) throws IOException {
+        if (receiver == null || message == null) {
+            return sendgridWrapper.sendMail();
+        }
         return sendgridWrapper.sendMail(receiver, message);
     }
+
+    @PostMapping("/sendReminder")
+    public Response sendReminder(@RequestBody String receiver) throws IOException {
+        return sendgridWrapper.sendReminder(receiver);
+    }
+
+
 }

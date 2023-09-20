@@ -19,7 +19,7 @@ public class SendgridWrapper {
     }
 
     public Response sendMail(String receiver, String textContent) throws IOException {
-        String apiKey = "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";
+        String apiKey = "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";
 
         Email from = new Email("jakubwodecki@seznam.cz");
         String subject = "Hello, SendGrid!";
@@ -41,5 +41,9 @@ public class SendgridWrapper {
         } catch (IOException ex) {
             throw new IOException("Something went wrong with sending your email", ex);
         }
+    }
+
+    public Response sendReminder(String receiver) throws IOException {
+        return sendMail(receiver, "Reminder with database data");
     }
 }
