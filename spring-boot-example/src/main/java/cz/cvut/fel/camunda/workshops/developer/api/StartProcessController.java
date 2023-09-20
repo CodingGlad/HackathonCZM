@@ -1,14 +1,19 @@
 package cz.cvut.fel.camunda.workshops.developer.api;
 
+import com.sendgrid.Response;
+import cz.cvut.fel.camunda.workshops.developer.handlers.SendgridWrapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.camunda.community.rest.client.api.ProcessDefinitionApi;
 import org.camunda.community.rest.client.dto.StartProcessInstanceDto;
 import org.camunda.community.rest.client.dto.VariableValueDto;
 import org.camunda.community.rest.client.invoker.ApiException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.IOException;
 import java.util.UUID;
 
 @RestController
@@ -28,4 +33,9 @@ public class StartProcessController {
         processDefinitionApi.startProcessInstance(PROCESS_KEY, startProcessInstanceDto);
     }
 
+    @PostMapping("/sendEmail")
+    public Response sendEmail(@Autowired SendgridWrapper sendgridWrapper,
+    @RequestBody String receiver, @RequestBody String message) throws IOException {
+        return sendgridWrapper.sendMail(receiver, message);
+    }
 }
