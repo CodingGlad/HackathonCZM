@@ -8,6 +8,7 @@ import org.camunda.bpm.client.task.ExternalTaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Timestamp;
@@ -25,6 +26,8 @@ import java.util.UUID;
 public class ReservationHandler implements ExternalTaskHandler {
     @Autowired
     PostgresHandler postgresHandler;
+    @Autowired
+    SendgridWrapper sendgridWrapper;
 
     @Override
     public void execute(ExternalTask externalTask, ExternalTaskService externalTaskService) {
@@ -65,6 +68,7 @@ public class ReservationHandler implements ExternalTaskHandler {
             throw new RuntimeException("There was a problem adding your driver profile to out database");
         }
 
+
         if ("need".equals(inputVariables.get("radio"))) {
             String tireInsert = """
                     INSERT INTO Tires (code, spz_of_car, size_of_tires
@@ -86,13 +90,14 @@ public class ReservationHandler implements ExternalTaskHandler {
             }
         }
 
+        UUID reservationId = UUID.randomUUID();
         String reservationInsert = """
                 INSERT INTO Reservation (number_of_reservation, date_of_reservtion, telephone_driver, spz_of_car)
                 VALUES (?, ?, ?, ?);
                     """;
         try {
             PreparedStatement reservationPreparedStatement = postgresHandler.getConnection().prepareStatement(reservationInsert);
-            reservationPreparedStatement.setString(1, String.valueOf(UUID.randomUUID()));
+            reservationPreparedStatement.setString(1, String.valueOf(reservationId));
             reservationPreparedStatement.setTimestamp(2, Timestamp
                     .valueOf(convertToSQLTimestamp((String) inputVariables.get("date"))));
             reservationPreparedStatement.setString(3, (String) inputVariables.get("phone"));
@@ -102,8 +107,16 @@ public class ReservationHandler implements ExternalTaskHandler {
         }
 
 
-        log.info("successfully created a reservation for " + inputVariables.get("date"));
+        log.info("successfully created a reservation " + reservationId);
 
+
+        try {
+            sendgridWrapper.sendMail((String) inputVariables.get("mail"),
+                    "USPESNE VYTVORENA OBJEDNAVKA " + reservationId);
+            log.info("Send notification to " + inputVariables.get("mail"));
+        } catch (IOException e) {
+            throw new RuntimeException("ERROR SENDING NOTIFICATION",e);
+        }
         externalTaskService.complete(externalTask);
     }
 
