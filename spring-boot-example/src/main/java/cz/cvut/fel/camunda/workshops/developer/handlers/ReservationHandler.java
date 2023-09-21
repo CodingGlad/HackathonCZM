@@ -1,15 +1,10 @@
 package cz.cvut.fel.camunda.workshops.developer.handlers;
 
 import lombok.extern.slf4j.Slf4j;
-import org.camunda.bpm.client.spring.SpringTopicSubscription;
 import org.camunda.bpm.client.spring.annotation.ExternalTaskSubscription;
-import org.camunda.bpm.client.spring.event.SubscriptionInitializedEvent;
 import org.camunda.bpm.client.task.ExternalTask;
 import org.camunda.bpm.client.task.ExternalTaskHandler;
 import org.camunda.bpm.client.task.ExternalTaskService;
-import org.camunda.bpm.engine.variable.VariableMap;
-import org.camunda.bpm.engine.variable.Variables;
-import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;
@@ -17,9 +12,9 @@ import java.util.Map;
 @Slf4j
 @Component
 @ExternalTaskSubscription(
-        topicName = "contactVubec"
+        topicName = "handleReservation"
 )
-public class FetchUserDetailHandler implements ExternalTaskHandler {
+public class ReservationHandler implements ExternalTaskHandler {
 
 
     @Override
