@@ -1,9 +1,11 @@
 package cz.cvut.fel.camunda.workshops.developer.handlers;
 
+import org.springframework.stereotype.Component;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-
+@Component
 public class PostgresHandler {
     private final Connection connection;
 
