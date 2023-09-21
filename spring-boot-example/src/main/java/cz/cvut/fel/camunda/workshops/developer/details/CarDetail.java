@@ -5,6 +5,6 @@ import lombok.Data;
 @Data
 public class CarDetail {
     private String spz;
-    private String carManufacturer;
-    private String carType;
+    private String manufacturer;
+    private String model;
 }

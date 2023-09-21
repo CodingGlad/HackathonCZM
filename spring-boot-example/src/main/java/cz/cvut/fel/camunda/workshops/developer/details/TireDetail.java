@@ -2,13 +2,16 @@ package cz.cvut.fel.camunda.workshops.developer.details;
 
 import lombok.Data;
 
+import java.util.UUID;
+
 @Data
 public class TireDetail {
+    private UUID code;
     private String spzOfCar;
-    private String sizeOfTires;
     private String depthOfTreads;
+    private String sizeOfTires;
     private String tireManufacturer;
-    private String placeInStorge;
-    private boolean areTiresStored;
+    private boolean isStored;
+    private String placeInStorage;
     private String seasonType;
 }
