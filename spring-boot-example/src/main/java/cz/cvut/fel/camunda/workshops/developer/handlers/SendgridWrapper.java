@@ -56,6 +56,9 @@ public class SendgridWrapper {
     }
 
     public Response sendReservationConfirmation(String receiver, UUID orderId, String dateTime) throws IOException {
+        String[] parts = dateTime.split(" ");
+        String dateString = parts[0];
+        String timeString = parts[1];
         String template = """
                 <p><strong>Vážený zákazníku,</strong></p>
                 <p>
@@ -71,11 +74,6 @@ public class SendgridWrapper {
                 <p><strong>S pozdravem,</strong></p>
                 <p>Václav Stopa</p>
                 """;
-
-        String[] parts = dateTime.split(" "); // Split the input string by space
-
-        String dateString = parts[0]; // Contains "18/11/2020"
-        String timeString = parts[1]; // Contains "13:30"
         String content = String.format(template, orderId, dateString, timeString);
 
         String subject = "Potvrzení o objednávce č. " + orderId;
