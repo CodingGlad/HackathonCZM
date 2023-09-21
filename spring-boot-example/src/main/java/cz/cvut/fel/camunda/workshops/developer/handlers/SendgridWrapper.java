@@ -1,5 +1,6 @@
 package cz.cvut.fel.camunda.workshops.developer.handlers;
 
+import lombok.extern.slf4j.Slf4j;
 import com.sendgrid.Method;
 import com.sendgrid.Request;
 import com.sendgrid.Response;
@@ -12,8 +13,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.UUID;
 
+@Slf4j
 @Component
 public class SendgridWrapper {
     @Autowired
@@ -32,7 +36,6 @@ public class SendgridWrapper {
         Content content = new Content(contentType, textContent);
 
         Mail mail = new Mail(from, subjectInput, to, content);
-
         SendGrid sg = new SendGrid(apiKey);
         Request request = new Request();
 
@@ -49,6 +52,42 @@ public class SendgridWrapper {
     }
 
 
+
+    public Response setScheduledEmail(String receiver, String textContent, String subjectInput, String contentType,
+                                      long scheduledTimeInUnixTimspamp) throws IOException {
+        String apiKey = appConfig.getApiKey();
+
+        Email from = new Email("jakubwodecki@seznam.cz");
+        Email to = new Email(receiver);
+        Content content = new Content(contentType, textContent);
+
+        Mail mail = new Mail(from, subjectInput, to, content);
+        mail.setSendAt(scheduledTimeInUnixTimspamp);
+
+        SendGrid sg = new SendGrid(apiKey);
+        Request request = new Request();
+
+        try {
+            request.setMethod(Method.POST);
+            request.setEndpoint("mail/send");
+            request.setBody(mail.build());
+
+            Date date = new Date(scheduledTimeInUnixTimspamp * 1000L); // Multiply by 1000 to convert from seconds to milliseconds
+
+            // Create a SimpleDateFormat object for the desired date format
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+
+            // Format the Date object as a string
+            String formattedDate = dateFormat.format(date);
+
+
+            log.info("MAIL TO " + receiver + " WILL ARRIVE AT " + formattedDate);
+            return sg.api(request);
+
+        } catch (IOException ex) {
+            throw new IOException("Something went wrong with sending your email", ex);
+        }
+    }
 
     public Response sendReminder(String receiver) throws IOException {
         return sendMail(receiver, "Reminder with database data", "reminder", "text/plain");
