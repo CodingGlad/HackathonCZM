@@ -9,12 +9,14 @@ import org.camunda.community.rest.client.dto.StartProcessInstanceDto;
 import org.camunda.community.rest.client.dto.VariableValueDto;
 import org.camunda.community.rest.client.invoker.ApiException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Required;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.TimeZone;
 import java.util.UUID;
 
 @RestController
@@ -37,10 +39,18 @@ public class StartProcessController {
     @PostMapping("/sendEmail")
     public Response sendEmail(@RequestBody(required = false) String receiver,
                               @RequestBody(required = false) String message) throws IOException {
-        if (receiver == null || message == null) {
-            return sendgridWrapper.sendMail();
-        }
-        return sendgridWrapper.sendMail(receiver, message, "test", "text/plain");
+        Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
+
+        // Add one minute to the current time
+        calendar.add(Calendar.MINUTE, 1);
+
+        // Get the new time as a Date object
+        Date oneMinuteFromNow = calendar.getTime();
+
+        // Convert the Date object to a UNIX timestamp
+        long unixTimestamp = oneMinuteFromNow.getTime() / 1000L;
+        return sendgridWrapper.setScheduledEmail("tobiasle99@gmail.com", "scheduled", "test", "text/plain",
+                unixTimestamp);
     }
 
     @PostMapping("/sendReminder")
