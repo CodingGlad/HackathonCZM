@@ -117,8 +117,9 @@ public class ReservationHandler implements ExternalTaskHandler {
 
 
         try {
-            sendgridWrapper.sendMail((String) inputVariables.get("mail"),
-                    "USPESNE VYTVORENA OBJEDNAVKA " + reservationId);
+            sendgridWrapper.sendReservationConfirmation(
+                    (String) inputVariables.get("mail"), reservationId, (String) inputVariables.get("date")
+            );
             log.info("Send notification to " + inputVariables.get("mail"));
         } catch (IOException e) {
             throw new RuntimeException("ERROR SENDING NOTIFICATION",e);

@@ -40,7 +40,7 @@ public class StartProcessController {
         if (receiver == null || message == null) {
             return sendgridWrapper.sendMail();
         }
-        return sendgridWrapper.sendMail(receiver, message);
+        return sendgridWrapper.sendMail(receiver, message, "test", "text/plain");
     }
 
     @PostMapping("/sendReminder")
