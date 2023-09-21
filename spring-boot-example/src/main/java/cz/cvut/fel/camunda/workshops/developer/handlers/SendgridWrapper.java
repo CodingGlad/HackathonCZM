@@ -98,7 +98,7 @@ public class SendgridWrapper {
                 </p>
                 <p><strong>Podrobnosti vaší rezervace:</strong></p>
                 <ul>
-                    <li>Číslo objednávky: %s</li>
+                    <li>Číslo rezervace: %s</li>
                     <li>Datum: %s</li>
                     <li>Čas: %s</li>
                 </ul>
@@ -108,7 +108,7 @@ public class SendgridWrapper {
                 """;
         String content = contentCreator(orderId, dateTime, template);
 
-        String subject = "Potvrzení o objednávce č. " + orderId;
+        String subject = "Potvrzení o rezervaci č. " + orderId;
         return sendMail(receiver, content, subject, "text/html");
     }
 
@@ -120,18 +120,18 @@ public class SendgridWrapper {
                     </p>
                     <p><strong>Podrobnosti vaší rezervace:</strong></p>
                     <ul>
-                        <li>Číslo objednávky: %s</li>
+                        <li>Číslo rezervace: %s</li>
                         <li>Datum: %s</li>
                         <li>Čas: %s</li>
                     </ul>
                     <p>Upozorňujeme, že zrušení rezervace je možné do 1 týdne před termínem. V případě, že nás neinformujete o své neschopnosti dorazit, hrozí pokuta ve výši 500 korun.</p>
-                    <p><strong>S pozdravem,</strong></p>
+                    <p><strong>S pozdravem</strong></p>
                     <p>Václav Stopa</p>
                 """;
 
         String content = contentCreator(orderId, dateTime, template);
 
-        String subject = "Připomenutí objednávky č. " + orderId;
+        String subject = "Připomenutí rezervace č. " + orderId;
 
         return setScheduledEmail(receiver, content, subject, "text/html", timeToSendMailUnixTimestamp);
 
