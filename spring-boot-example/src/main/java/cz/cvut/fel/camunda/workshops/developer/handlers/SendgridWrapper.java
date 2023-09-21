@@ -89,14 +89,8 @@ public class SendgridWrapper {
         }
     }
 
-    public Response sendReminder(String receiver) throws IOException {
-        return sendMail(receiver, "Reminder with database data", "reminder", "text/plain");
-    }
-
     public Response sendReservationConfirmation(String receiver, UUID orderId, String dateTime) throws IOException {
-        String[] parts = dateTime.split(" ");
-        String dateString = parts[0];
-        String timeString = parts[1];
+
         String template = """
                 <p><strong>Vážený zákazníku,</strong></p>
                 <p>
@@ -112,9 +106,42 @@ public class SendgridWrapper {
                 <p><strong>S pozdravem</strong></p>
                 <p>Václav Stopa</p>
                 """;
-        String content = String.format(template, orderId, dateString, timeString);
+        String content = contentCreator(orderId, dateTime, template);
 
         String subject = "Potvrzení o objednávce č. " + orderId;
         return sendMail(receiver, content, subject, "text/html");
     }
+
+    public Response sendReminder (String receiver, UUID orderId, String dateTime, long timeToSendMailUnixTimestamp) throws IOException {
+        String template = """
+                    <p><strong>Vážený zákazníku,</strong></p>
+                    <p>
+                        Toto je připomenutí ohledně vaší rezervace na návštěvu našeho pneuservisu. Rádi bychom vás přivítali v našem servisním centru.
+                    </p>
+                    <p><strong>Podrobnosti vaší rezervace:</strong></p>
+                    <ul>
+                        <li>Číslo objednávky: %s</li>
+                        <li>Datum: %s</li>
+                        <li>Čas: %s</li>
+                    </ul>
+                    <p>Upozorňujeme, že zrušení rezervace je možné do 1 týdne před termínem. V případě, že nás neinformujete o své neschopnosti dorazit, hrozí pokuta ve výši 500 korun.</p>
+                    <p><strong>S pozdravem,</strong></p>
+                    <p>Václav Stopa</p>
+                """;
+
+        String content = contentCreator(orderId, dateTime, template);
+
+        String subject = "Připomenutí objednávky č. " + orderId;
+
+        return setScheduledEmail(receiver, content, subject, "text/html", timeToSendMailUnixTimestamp);
+
+    };
+
+    public String contentCreator(UUID orderId, String dateTime, String template) {
+        String[] parts = dateTime.split(" ");
+        String dateString = parts[0];
+        String timeString = parts[1];
+        return String.format(template, orderId, dateString, timeString);
+    }
+
 }

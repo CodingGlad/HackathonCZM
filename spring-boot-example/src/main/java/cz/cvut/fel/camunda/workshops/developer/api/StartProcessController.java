@@ -39,24 +39,6 @@ public class StartProcessController {
     @PostMapping("/sendEmail")
     public Response sendEmail(@RequestBody(required = false) String receiver,
                               @RequestBody(required = false) String message) throws IOException {
-        Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
-
-        // Add one minute to the current time
-        calendar.add(Calendar.MINUTE, 1);
-
-        // Get the new time as a Date object
-        Date oneMinuteFromNow = calendar.getTime();
-
-        // Convert the Date object to a UNIX timestamp
-        long unixTimestamp = oneMinuteFromNow.getTime() / 1000L;
-        return sendgridWrapper.setScheduledEmail("tobiasle99@gmail.com", "scheduled", "test", "text/plain",
-                unixTimestamp);
+        return sendgridWrapper.sendMail();
     }
-
-    @PostMapping("/sendReminder")
-    public Response sendReminder(@RequestBody String receiver) throws IOException {
-        return sendgridWrapper.sendReminder(receiver);
-    }
-
-
 }
