@@ -78,7 +78,6 @@ public class ReservationHandler implements ExternalTaskHandler {
                 tirePreparedStatement.setString(3, (String) inputVariables.get("tire_size"));
                 tirePreparedStatement.setString(4, (String) ((inputVariables.get("tire_manufacturer") != null)
                         ? inputVariables.get("tire_manufacturer") : null));
-);
                 tirePreparedStatement.setBoolean(5, false);
                 tirePreparedStatement.setString(6, (String) inputVariables.get("season"));
                 tirePreparedStatement.executeUpdate();
