@@ -28,11 +28,10 @@ public class SendgridWrapper {
         String apiKey = appConfig.getApiKey();
 
         Email from = new Email("jakubwodecki@seznam.cz");
-        String subject = subjectInput;
         Email to = new Email(receiver);
         Content content = new Content(contentType, textContent);
 
-        Mail mail = new Mail(from, subject, to, content);
+        Mail mail = new Mail(from, subjectInput, to, content);
 
         SendGrid sg = new SendGrid(apiKey);
         Request request = new Request();
@@ -71,7 +70,7 @@ public class SendgridWrapper {
                     <li>Čas: %s</li>
                 </ul>
                 <p>Upozorňujeme, že zrušení rezervace je možné do 1 týdně před termínem. V případě, že nás neinformujete o své neschopnosti dorazit, hrozí pokuta ve výši 500 korun.</p>
-                <p><strong>S pozdravem,</strong></p>
+                <p><strong>S pozdravem</strong></p>
                 <p>Václav Stopa</p>
                 """;
         String content = String.format(template, orderId, dateString, timeString);
