@@ -8,4 +8,8 @@ import java.util.UUID;
 public class ReservationDetail {
     private UUID reservationId;
     private String dateTime;
+    private String telephone;
+    private String spz;
+    private String typeOfWork;
+    private String notes;
 }
