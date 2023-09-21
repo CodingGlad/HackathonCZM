@@ -71,7 +71,7 @@ public class ReservationHandler implements ExternalTaskHandler {
 
         if ("need".equals(inputVariables.get("radio"))) {
             String tireInsert = """
-                    INSERT INTO Tires (code, spz_of_car, size_of_tires
+                    INSERT INTO Tires (code, spz_of_car, size_of_tires,
                      tire_manufacturer, is_stored, season_type)
                     VALUES (?, ?, ?, ?, ?, ?);
                     """;
@@ -92,7 +92,7 @@ public class ReservationHandler implements ExternalTaskHandler {
 
         UUID reservationId = UUID.randomUUID();
         String reservationInsert = """
-                INSERT INTO Reservation (number_of_reservation, date_of_reservtion, telephone_driver, spz_of_car)
+                INSERT INTO Reservation (number_of_reservation, date_of_reservation, telephone_driver, spz_of_car)
                 VALUES (?, ?, ?, ?);
                     """;
         try {
@@ -102,6 +102,7 @@ public class ReservationHandler implements ExternalTaskHandler {
                     .valueOf(convertToSQLTimestamp((String) inputVariables.get("date"))));
             reservationPreparedStatement.setString(3, (String) inputVariables.get("phone"));
             reservationPreparedStatement.setString(4, (String) inputVariables.get("spz"));
+            reservationPreparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException("There was a problem adding your reservation profile to out database");
         }
