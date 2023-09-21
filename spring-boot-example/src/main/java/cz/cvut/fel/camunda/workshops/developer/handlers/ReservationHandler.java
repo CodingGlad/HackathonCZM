@@ -69,16 +69,16 @@ public class ReservationHandler implements ExternalTaskHandler {
             String tireInsert = """
                     INSERT INTO Tires (code, spz_of_car, size_of_tires
                      tire_manufacturer, is_stored, season_type)
-                    VALUES (?, ?, ?, ?, ?, ?)
-                    ON CONFLICT (telephone)
-                    DO UPDATE SET email = excluded.email;
+                    VALUES (?, ?, ?, ?, ?, ?);
                     """;
             try {
                 PreparedStatement tirePreparedStatement = postgresHandler.getConnection().prepareStatement(tireInsert);
                 tirePreparedStatement.setString(1, String.valueOf(UUID.randomUUID()));
                 tirePreparedStatement.setString(2, (String) inputVariables.get("spz"));
                 tirePreparedStatement.setString(3, (String) inputVariables.get("tire_size"));
-                tirePreparedStatement.setString(4, (String) inputVariables.get("tire_manufacturer"));
+                tirePreparedStatement.setString(4, (String) ((inputVariables.get("tire_manufacturer") != null)
+                        ? inputVariables.get("tire_manufacturer") : null));
+);
                 tirePreparedStatement.setBoolean(5, false);
                 tirePreparedStatement.setString(6, (String) inputVariables.get("season"));
                 tirePreparedStatement.executeUpdate();
