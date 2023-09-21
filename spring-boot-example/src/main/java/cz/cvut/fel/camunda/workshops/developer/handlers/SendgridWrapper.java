@@ -69,7 +69,7 @@ public class SendgridWrapper {
                     <li>Datum: %s</li>
                     <li>Čas: %s</li>
                 </ul>
-                <p>Upozorňujeme, že zrušení rezervace je možné do 1 týdně před termínem. V případě, že nás neinformujete o své neschopnosti dorazit, hrozí pokuta ve výši 500 korun.</p>
+                <p>Upozorňujeme, že zrušení rezervace je možné do 1 týdne před termínem. V případě, že nás neinformujete o své neschopnosti dorazit, hrozí pokuta ve výši 500 korun.</p>
                 <p><strong>S pozdravem</strong></p>
                 <p>Václav Stopa</p>
                 """;
