@@ -72,8 +72,8 @@ public class ReservationHandler implements ExternalTaskHandler {
         if ("need".equals(inputVariables.get("radio"))) {
             String tireInsert = """
                     INSERT INTO Tires (code, spz_of_car, size_of_tires,
-                     tire_manufacturer, is_stored, season_type)
-                    VALUES (?, ?, ?, ?, ?, ?);
+                     tire_manufacturer, is_stored, season_type, notes)
+                    VALUES (?, ?, ?, ?, ?, ?, ?);
                     """;
             try {
                 PreparedStatement tirePreparedStatement = postgresHandler.getConnection().prepareStatement(tireInsert);
@@ -84,6 +84,8 @@ public class ReservationHandler implements ExternalTaskHandler {
                         ? inputVariables.get("tire_manufacturer") : null));
                 tirePreparedStatement.setBoolean(5, false);
                 tirePreparedStatement.setString(6, (String) inputVariables.get("season"));
+                tirePreparedStatement.setString(7, (String) ((inputVariables.get("tire_notes") != null)
+                        ? inputVariables.get("notes") : null));
                 tirePreparedStatement.executeUpdate();
             } catch (SQLException e) {
                 throw new RuntimeException("There was a problem adding your tires profile to out database");
@@ -92,8 +94,9 @@ public class ReservationHandler implements ExternalTaskHandler {
 
         UUID reservationId = UUID.randomUUID();
         String reservationInsert = """
-                INSERT INTO Reservation (number_of_reservation, date_of_reservation, telephone_driver, spz_of_car)
-                VALUES (?, ?, ?, ?);
+                INSERT INTO Reservation (number_of_reservation, date_of_reservation, telephone_driver, spz_of_car,
+                type_of_work, notes)
+                VALUES (?, ?, ?, ?, ?, ?);
                     """;
         try {
             PreparedStatement reservationPreparedStatement = postgresHandler.getConnection().prepareStatement(reservationInsert);
@@ -102,6 +105,8 @@ public class ReservationHandler implements ExternalTaskHandler {
                     .valueOf(convertToSQLTimestamp((String) inputVariables.get("date"))));
             reservationPreparedStatement.setString(3, (String) inputVariables.get("phone"));
             reservationPreparedStatement.setString(4, (String) inputVariables.get("spz"));
+            reservationPreparedStatement.setString(5, (String) inputVariables.get("type_of_work"));
+            reservationPreparedStatement.setString(6, (String) inputVariables.get("reservation_notesk"));
             reservationPreparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException("There was a problem adding your reservation profile to out database");
