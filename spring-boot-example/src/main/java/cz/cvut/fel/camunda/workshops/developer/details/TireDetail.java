@@ -11,7 +11,8 @@ public class TireDetail {
     private String depthOfTreads;
     private String sizeOfTires;
     private String tireManufacturer;
-    private boolean isStored;
+    private String isStored;
     private String placeInStorage;
     private String seasonType;
+    private String notes;
 }
