@@ -65,7 +65,7 @@ public class ReservationHandler implements ExternalTaskHandler {
             carsPreparedStatement.setString(4, (String) inputVariables.get("mail"));
             carsPreparedStatement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException("There was a problem adding your driver profile to out database");
+            throw new RuntimeException("There was a problem adding your driver profile to our database");
         }
 
 
