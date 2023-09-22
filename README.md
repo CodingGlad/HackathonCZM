@@ -35,10 +35,10 @@ Our project leverages the following technologies and tools:
 
 The "vúbec" team members who contributed to the success of this project are:
 
-- **Tobias:** Developer
-- **Kuba:** Analytic
-- **Kuba:** Team leader / analytic
-- **Veronika:** Developer
+- **Jakub Wodecki (CodingGlad):** Team leader / Manager
+- **Tobias Le (Tangoslav):** Developer
+- **Kuba Bergman (Bergic):** Designer
+- **Veronika Efimova (Efimover):** Database Engineer
 
 ## Getting Started
 
