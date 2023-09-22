@@ -14,9 +14,7 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 @Slf4j
 @Component
@@ -121,6 +119,17 @@ public class ReservationHandler implements ExternalTaskHandler {
                     (String) inputVariables.get("mail"), reservationId, (String) inputVariables.get("date")
             );
             log.info("Send notification to " + inputVariables.get("mail"));
+
+
+
+
+            Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
+            calendar.add(Calendar.MINUTE, 2);
+            Date oneMinuteFromNow = calendar.getTime();
+            long unixTimestamp = oneMinuteFromNow.getTime() / 1000L;
+
+            sendgridWrapper.sendReminder((String) inputVariables.get("mail"), reservationId, (String) inputVariables.get("date"),
+                    unixTimestamp);
         } catch (IOException e) {
             throw new RuntimeException("ERROR SENDING NOTIFICATION",e);
         }
