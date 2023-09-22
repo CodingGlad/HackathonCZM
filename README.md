@@ -35,10 +35,10 @@ Our project leverages the following technologies and tools:
 
 The "vúbec" team members who contributed to the success of this project are:
 
-- **Tobias:** Backend Developer
-- **Kuba:** Frontend Developer
-- **Kuba:** Workflow and Automation Specialist
-- **Veronika:** UI/UX Designer
+- **Tobias:** Developer
+- **Kuba:** Analytic
+- **Kuba:** Team leader / analytic
+- **Veronika:** Developer
 
 ## Getting Started
 
