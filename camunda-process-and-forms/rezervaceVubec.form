@@ -1,0 +1,127 @@
+{
+  "components": [
+    {
+      "text": "# Přihláška k výměně pneumatik",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_0u7tua5",
+        "columns": null
+      },
+      "id": "Field_12pzbap"
+    },
+    {
+      "label": "Jméno",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0iks03v",
+        "columns": null
+      },
+      "id": "Field_1txs619",
+      "key": "name",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Příjmení",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0e3y7t2",
+        "columns": null
+      },
+      "id": "Field_0sa6c66",
+      "key": "surname",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "SPZ auta",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0kf9slz",
+        "columns": null
+      },
+      "id": "Field_0oc1x6s",
+      "key": "spz",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Email",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1gzl496",
+        "columns": null
+      },
+      "id": "Field_0a0j8gc",
+      "key": "email",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Telefonní číslo",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1tq499i",
+        "columns": null
+      },
+      "id": "Field_1entdjr",
+      "key": "phone",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "text": "## Termín",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_15fir9s",
+        "columns": 2
+      },
+      "id": "Field_0zntnad"
+    },
+    {
+      "subtype": "date",
+      "dateLabel": "Datum",
+      "label": "Date time",
+      "type": "datetime",
+      "layout": {
+        "row": "Row_15fir9s",
+        "columns": 5
+      },
+      "id": "Field_0e6qn2l",
+      "key": "date",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Čas",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_15fir9s",
+        "columns": null
+      },
+      "id": "Field_096f9tg",
+      "key": "time",
+      "validate": {
+        "required": true
+      },
+      "description": "Pište prosím pouze celé hodiny a půly (:00 a :30)"
+    }
+  ],
+  "type": "default",
+  "id": "rezervaceVubec",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.15.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.19.0",
+  "schemaVersion": 10
+}

@@ -1,0 +1,57 @@
+{
+  "components": [
+    {
+      "text": "# Důvod návštěvy",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_14q2iu3",
+        "columns": null
+      },
+      "id": "Field_1kcgt5e"
+    },
+    {
+      "values": [
+        {
+          "label": "Výměna kol",
+          "value": "changeWheels"
+        },
+        {
+          "label": "Přezutí",
+          "value": "changeTires"
+        },
+        {
+          "label": "Oprava",
+          "value": "repair"
+        }
+      ],
+      "label": "Vyberte důvod",
+      "type": "radio",
+      "layout": {
+        "row": "Row_088nkrk",
+        "columns": null
+      },
+      "id": "Field_0hr9l3w",
+      "key": "type_of_work"
+    },
+    {
+      "label": "Poznámka",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_09gkzsc",
+        "columns": null
+      },
+      "id": "Field_0lc3bgd",
+      "key": "reservation_notes"
+    }
+  ],
+  "type": "default",
+  "id": "firstRadio",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.15.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.19.0",
+  "schemaVersion": 10
+}

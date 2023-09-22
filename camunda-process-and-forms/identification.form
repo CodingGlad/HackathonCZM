@@ -1,0 +1,79 @@
+{
+  "components": [
+    {
+      "text": "# Indetifikační formulář",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_0ig4t07",
+        "columns": null
+      },
+      "id": "Field_0i3myid"
+    },
+    {
+      "label": "Jméno",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0fe2z32",
+        "columns": null
+      },
+      "id": "Field_13c03er",
+      "key": "name",
+      "validate": {
+        "required": false
+      },
+      "disabled": true
+    },
+    {
+      "label": "Příjmení",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1x7frp6",
+        "columns": null
+      },
+      "id": "Field_0u0z4jn",
+      "key": "surname",
+      "validate": {
+        "required": false
+      },
+      "disabled": true
+    },
+    {
+      "label": "Telefon",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1oh0sue",
+        "columns": 16
+      },
+      "id": "Field_1lvsmq8",
+      "key": "phone",
+      "validate": {
+        "required": false
+      },
+      "disabled": true
+    },
+    {
+      "label": "SPZ",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_04p5c8l",
+        "columns": 16
+      },
+      "id": "Field_15ga913",
+      "key": "spz",
+      "validate": {
+        "required": false
+      },
+      "disabled": true
+    }
+  ],
+  "type": "default",
+  "id": "identification",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.15.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.19.0",
+  "schemaVersion": 10
+}

@@ -1,0 +1,77 @@
+{
+  "components": [
+    {
+      "text": "# Zapis z vymeny",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_113cbxf",
+        "columns": null
+      },
+      "id": "Field_1fs9fj1"
+    },
+    {
+      "values": [
+        {
+          "label": "Value 1",
+          "value": "Value 1"
+        },
+        {
+          "label": "Value 2",
+          "value": "value2"
+        },
+        {
+          "label": "Value 3",
+          "value": "value3"
+        },
+        {
+          "label": "Value 4",
+          "value": "value4"
+        },
+        {
+          "label": "Value 5",
+          "value": "value5"
+        }
+      ],
+      "label": "Provedene zmeny",
+      "type": "checklist",
+      "layout": {
+        "row": "Row_1xvbxwc",
+        "columns": null
+      },
+      "id": "Field_0vqtegj",
+      "key": "field_1kbjl7u"
+    },
+    {
+      "label": "Dodatecne informace",
+      "type": "textarea",
+      "layout": {
+        "row": "Row_036cbj8",
+        "columns": null
+      },
+      "id": "Field_1z0zow4",
+      "key": "field_09tgkmk"
+    },
+    {
+      "action": "submit",
+      "label": "Ulozit",
+      "type": "button",
+      "layout": {
+        "row": "Row_0ldpnhf",
+        "columns": null
+      },
+      "id": "Field_1rb5e2w",
+      "key": "field_1efx8ia",
+      "properties": {}
+    }
+  ],
+  "type": "default",
+  "id": "zapisVymeny",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.2.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.15.0"
+  },
+  "schemaVersion": 10
+}

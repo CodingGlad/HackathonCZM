@@ -1,0 +1,77 @@
+{
+  "components": [
+    {
+      "text": "# Osobní údaje",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_0tuhqra",
+        "columns": null
+      },
+      "id": "Field_0v9m0cq"
+    },
+    {
+      "label": "Jméno",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0ms2o1e",
+        "columns": null
+      },
+      "id": "Field_1iurw9h",
+      "key": "name",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Příjmení",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1dft4si",
+        "columns": null
+      },
+      "id": "Field_0docsj0",
+      "key": "surname",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "E-mail",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_14mdfki",
+        "columns": null
+      },
+      "id": "Field_17rstg2",
+      "key": "mail",
+      "validate": {
+        "required": true,
+        "pattern": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"
+      }
+    },
+    {
+      "label": "Telefon",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_00e57v7",
+        "columns": null
+      },
+      "id": "Field_11adl6n",
+      "key": "phone",
+      "validate": {
+        "required": true,
+        "pattern": "^\\d{9}$"
+      }
+    }
+  ],
+  "type": "default",
+  "id": "DriverDetail",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.15.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.19.0",
+  "schemaVersion": 10
+}

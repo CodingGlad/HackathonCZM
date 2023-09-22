@@ -1,0 +1,86 @@
+{
+  "components": [
+    {
+      "text": "# Údaje o pneumatikách",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_12hdiyu",
+        "columns": null
+      },
+      "id": "Field_15puhn8"
+    },
+    {
+      "label": "Preferovaný výrobce",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_118enxf",
+        "columns": null
+      },
+      "id": "Field_0mwlkka",
+      "key": "tire_manufacturer",
+      "validate": {
+        "required": false
+      }
+    },
+    {
+      "label": "Velikost",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0mp585i",
+        "columns": null
+      },
+      "id": "Field_04iwmjm",
+      "key": "tire_size",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "values": [
+        {
+          "label": "Letní",
+          "value": "summer"
+        },
+        {
+          "label": "Zimní",
+          "value": "winter"
+        },
+        {
+          "label": "Celoroční",
+          "value": "year"
+        }
+      ],
+      "label": "Sezóna",
+      "type": "radio",
+      "layout": {
+        "row": "Row_1iz4n6a",
+        "columns": null
+      },
+      "id": "Field_1v98t2p",
+      "key": "season",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Poznámky",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0b6vxyv",
+        "columns": null
+      },
+      "id": "Field_17a50pj",
+      "key": "tire_notes"
+    }
+  ],
+  "type": "default",
+  "id": "tires",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.15.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.19.0",
+  "schemaVersion": 10
+}

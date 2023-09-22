@@ -1,0 +1,63 @@
+{
+  "components": [
+    {
+      "text": "# Informace o autě",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_1idrxvq",
+        "columns": null
+      },
+      "id": "Field_05mvyfr"
+    },
+    {
+      "label": "SPZ",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0dtvxwf",
+        "columns": null
+      },
+      "id": "Field_0wfrnpe",
+      "key": "spz",
+      "validate": {
+        "required": true,
+        "pattern": "^[A-Z0-9 ]{8}$"
+      }
+    },
+    {
+      "label": "Výrobce",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0dtvxwf",
+        "columns": null
+      },
+      "id": "Field_024pe4m",
+      "key": "car_manufacturer",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Model",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0dtvxwf",
+        "columns": null
+      },
+      "id": "Field_1b6gbgd",
+      "key": "model",
+      "validate": {
+        "required": true
+      }
+    }
+  ],
+  "type": "default",
+  "id": "car",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.15.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.19.0",
+  "schemaVersion": 10
+}
