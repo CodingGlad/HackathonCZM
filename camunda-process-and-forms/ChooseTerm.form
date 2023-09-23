@@ -1,0 +1,62 @@
+{
+  "components": [
+    {
+      "text": "# Termín",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_0rgmnzy",
+        "columns": null
+      },
+      "id": "Field_18xgxjt"
+    },
+    {
+      "label": "Datum",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1wcwvlc",
+        "columns": null
+      },
+      "id": "Field_0g8bam4",
+      "key": "date",
+      "description": "Pište ve formátu DD/MM/RRRR HH:MM ve 30 minutových intervalech.",
+      "validate": {
+        "required": true,
+        "pattern": "^(0[1-9]|[12][0-9]|3[01])\\/(0[1-9]|1[0-2])\\/\\d{4} (0\\d|1\\d|2[0-3]):(00|30)$"
+      }
+    },
+    {
+      "values": [
+        {
+          "label": "Mám svoje gumy doma",
+          "value": "own"
+        },
+        {
+          "label": "Mám gumy u vás na skladě",
+          "value": "storage"
+        },
+        {
+          "label": "Potřebuji objednat nové gumy",
+          "value": "need"
+        }
+      ],
+      "label": "Informace o kolech",
+      "type": "radio",
+      "layout": {
+        "row": "Row_0loztef",
+        "columns": null
+      },
+      "id": "Field_0rre14l",
+      "key": "radio"
+    }
+  ],
+  "type": "default",
+  "id": "term",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.15.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.19.0",
+  "schemaVersion": 10
+}

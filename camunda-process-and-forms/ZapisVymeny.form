@@ -1,0 +1,123 @@
+{
+  "components": [
+    {
+      "text": "# Zápis z výměny",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_0ravoqf",
+        "columns": null
+      },
+      "id": "Field_0ds31m8"
+    },
+    {
+      "values": [
+        {
+          "label": "Výměna kol",
+          "value": "tireChange"
+        },
+        {
+          "label": "Přezutí gum",
+          "value": "pneuChange"
+        },
+        {
+          "label": "Výměna disků",
+          "value": "diskChange"
+        },
+        {
+          "label": "Oprava defektu",
+          "value": "defect"
+        }
+      ],
+      "label": "Operace",
+      "type": "checklist",
+      "layout": {
+        "row": "Row_0r6mcx6",
+        "columns": null
+      },
+      "id": "Field_01lwtru",
+      "key": "checklist"
+    },
+    {
+      "label": "Hloubka dezénu",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0r6mcx6",
+        "columns": 10
+      },
+      "id": "Field_1sz31zh",
+      "key": "depth",
+      "validate": {
+        "required": false
+      }
+    },
+    {
+      "label": "SPZ",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_14tymna",
+        "columns": 16
+      },
+      "id": "Field_1u31ud4",
+      "key": "spz",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Stav pneumatik",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0kn7kcq",
+        "columns": null
+      },
+      "id": "Field_0c3ksfo",
+      "key": "pneu"
+    },
+    {
+      "label": "Ostatní úpravy",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1ix1qb5",
+        "columns": null
+      },
+      "id": "Field_0yc6fov",
+      "key": "other"
+    },
+    {
+      "values": [
+        {
+          "label": "Ukládá si kola u mě",
+          "value": "inStorage"
+        }
+      ],
+      "label": "Uskladnění",
+      "type": "radio",
+      "layout": {
+        "row": "Row_1basx4n",
+        "columns": null
+      },
+      "id": "Field_0yrkzyu",
+      "key": "storage"
+    },
+    {
+      "label": "Místo ve skladě",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0wyg0dc",
+        "columns": null
+      },
+      "id": "Field_1i90ao1",
+      "key": "whereInStorage"
+    }
+  ],
+  "type": "default",
+  "id": "zapis",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.15.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.19.0",
+  "schemaVersion": 10
+}
